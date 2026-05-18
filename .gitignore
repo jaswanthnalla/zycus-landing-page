@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Local + working files
+.tmp/
+.DS_Store
+Thumbs.db
+*.log
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Vercel
+.vercel/
+
+# OS artifacts
+desktop.ini
+
+# Personal local Claude Code settings
+.claude/settings.local.json
+
+# Build artifacts that shouldn't be in source
+preview/.vercel/
+
+# Keep these in source:
+# !deliverables/screenshots/*.png  (intentional — included)
+# !deliverables/*.zip              (intentional — included)

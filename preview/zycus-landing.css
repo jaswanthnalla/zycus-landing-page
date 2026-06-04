@@ -101,7 +101,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .zycus-hero-eyebrow {
@@ -171,6 +171,11 @@
     display: block;
     width: 100%;
     height: auto;
+}
+
+.zycus-hero-form-side {
+    display: flex;
+    flex-direction: column;
 }
 
 /* ---------- Benefits ---------- */
@@ -400,11 +405,35 @@
     margin: 0 auto;
 }
 
+.zycus-hero-form-side .zycus-form-card {
+    max-width: 100%;
+    margin: 0;
+    padding: 32px;
+}
+
+.zycus-hero-form-side .zycus-form-header {
+    text-align: left;
+    margin-bottom: 24px;
+}
+
+.zycus-hero-form-side .zycus-form-header h2 {
+    font-size: 24px;
+    margin: 0 0 8px;
+}
+
+.zycus-hero-form-side .zycus-form-header p {
+    font-size: 14px;
+}
+
 .zycus-form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
     margin-bottom: 20px;
+}
+
+.zycus-hero-form-side .zycus-form-row {
+    grid-template-columns: 1fr;
 }
 
 .zycus-field {

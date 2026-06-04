@@ -217,8 +217,14 @@
 
     function initCounters() {
         var metrics = document.querySelectorAll('.zycus-metric-value');
-        if (!metrics.length || !('IntersectionObserver' in window)) {
-            metrics.forEach(function (m) { m.textContent = m.getAttribute('data-target') + (m.getAttribute('data-suffix') || ''); });
+        if (!metrics.length) return;
+
+        if (!('IntersectionObserver' in window)) {
+            // Fallback: set all values immediately
+            for (var i = 0; i < metrics.length; i++) {
+                var m = metrics[i];
+                m.textContent = m.getAttribute('data-target') + (m.getAttribute('data-suffix') || '');
+            }
             return;
         }
 
@@ -244,7 +250,9 @@
             });
         }, { threshold: 0.4 });
 
-        metrics.forEach(function (m) { observer.observe(m); });
+        for (var i = 0; i < metrics.length; i++) {
+            observer.observe(metrics[i]);
+        }
     }
 
     function initSmoothScroll() {
@@ -337,15 +345,17 @@
 
     function initHeroCtaTracking() {
         var btns = document.querySelectorAll('.zycus-hero [data-zycus-track]');
-        btns.forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                ga('cta_click', {
-                    button_location: 'hero',
-                    button_text: btn.textContent.trim(),
-                    section: 'hero'
+        for (var i = 0; i < btns.length; i++) {
+            (function (btn) {
+                btn.addEventListener('click', function () {
+                    ga('cta_click', {
+                        button_location: 'hero',
+                        button_text: btn.textContent.trim(),
+                        section: 'hero'
+                    });
                 });
-            });
-        });
+            })(btns[i]);
+        }
     }
 
     function ready(fn) {
